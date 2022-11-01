@@ -2,8 +2,13 @@
 
 Simplexl is a Python package which is used to create excel files dynamically using a program. This package depends on [openpyxl](https://pypi.org/project/openpyxl/) which is native python package for creating excel.
 
-# Installation
+# FEATURES
 
+- Generated formatted excel as ouput.
+- Automatically pick the width of column based on data size of column.
+
+
+# Installation
 ```
 pip install simplexl
 ```
@@ -46,7 +51,7 @@ xl.create_sheet(
     row_data=row_data
 )
 ```
-It will create a xlsx using row and col data 
+It will create a xlsx file using row and col data 
 
 # License
 

@@ -11,15 +11,15 @@ class CreateExcel:
 
         self.excel_name = excel_name
 
-    
+
     def make_header_columns_with_width(self, header_columns, row_data):
         headers_with_width = []
         try:
 
             for index, column in enumerate(header_columns):
-                max_row_width = max([len(row[index]) for row in row_data])
+                max_row_width = max([len(str(row[index])) for row in row_data])
                 col_width_max = 40 if max_row_width > 40 else max_row_width
-                col_width = len(column) + 2 if col_width_max <= len(column) else col_width_max
+                col_width = len(str(column)) + 2 if col_width_max <= len(str(column)) else col_width_max
                 headers_with_width.append(
                     (column, col_width)
                 )
