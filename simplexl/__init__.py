@@ -79,5 +79,5 @@ class CreateExcel:
         except Exception as err:
             return err
 
-    def save(self, name="generate-simplexl.xlsx"):
+    def save(self, name="generated-simplexl.xlsx"):
         self.wb.save(name)
