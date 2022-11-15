@@ -1,4 +1,4 @@
-__version__ = '0.1.0'
+__version__ = '1.0.2'
 
 from openpyxl import Workbook
 from openpyxl.styles import Alignment, Font, PatternFill
@@ -7,9 +7,10 @@ from openpyxl.utils import get_column_letter
 
 class CreateExcel:
 
-    def __init__(self, excel_name="generate-simplexl.xlsx"):
+    def __init__(self):
 
-        self.excel_name = excel_name
+        self.wb = Workbook()
+        self.wb.remove(self.wb.active)
 
 
     def make_header_columns_with_width(self, header_columns, row_data):
@@ -30,16 +31,13 @@ class CreateExcel:
         return headers_with_width
 
 
-    def create_sheet(self, col_data, row_data, sheet_name="sheet1", sheet_index=0):
-        wb = Workbook()
-        wb.remove(wb.active)
-        work_sheet = wb.create_sheet(
-            title=sheet_name,
-            index=sheet_index
-        )
+    def create_sheet(self, col_data, row_data, sheet_name=None, sheet_index=0):
+
+        sheet_options = {'title': sheet_name, 'index': sheet_index} if sheet_name else {}
+
+        work_sheet = self.wb.create_sheet(**sheet_options)
         self.populate_headers_to_excel(work_sheet, col_data, row_data)
         self.populate_row_data_to_excel(work_sheet, row_data)
-        wb.save(self.excel_name)
 
     def populate_headers_to_excel(self, work_sheet, col_data, row_data):
         try:
@@ -80,3 +78,6 @@ class CreateExcel:
                     cell.alignment = Alignment(vertical='top', wrap_text=False)
         except Exception as err:
             return err
+
+    def save(self, name="generate-simplexl.xlsx"):
+        self.wb.save(name)

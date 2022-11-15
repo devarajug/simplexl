@@ -21,17 +21,19 @@ The usage of simplexl is as follows
 ```
 from simplexl import CreateExcel
 
-xl = CreateExcel(
-    excel_name="path/name of the excel  #  default = generate-simplexl.xlsx
-)
+xl = CreateExcel()
+
 
 xl.create_sheet(
-    sheet_name=sheet_name,   # optional  default = sheet1
+    sheet_name=sheet_name,   # optional
     sheet_index=sheet_index  # optional default = 0
     col_data=col_data,
     row_data=row_data
 )
 
+xl.save(
+    name="path/name of the excel  #  default = generate-simplexl.xlsx
+)
 ```
 
 # Example
@@ -39,17 +41,32 @@ xl.create_sheet(
 ```
 from simplexl import CreateExcel
 
-col_data = ['col1', 'col2']
-row_data = [
+sheet1_col_data = ['col1', 'col2']
+sheet1_row_data = [
     ('col1_row1', 'col2_row1'),
     ('col1_row2', 'col2_row2')
 ]
+
+sheet2_col_data = ['col1', 'col2']
+sheet2_row_data = [
+    ('col1_row1', 'col2_row1'),
+    ('col1_row2', 'col2_row2')
+]
+
 xl = CreateExcel()
 
+# Sheet 1  
 xl.create_sheet(
-    col_data=col_data,
-    row_data=row_data
+    col_data=sheet1_col_data,
+    row_data=sheet1_row_data
 )
+
+# Sheet 2
+xl.create_sheet(
+    col_data=sheet2_col_data,
+    row_data=sheet2_row_data
+)
+xl.save()
 ```
 It will create a xlsx file using row and col data 
 

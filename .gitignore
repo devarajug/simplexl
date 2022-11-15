@@ -1,4 +1,6 @@
-__pycache__/*
+*/__pycache__/*
 dist/*
 tests/*
+test.py
+*.xlsx
 poetry.lock

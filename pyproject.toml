@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "simplexl"
-version = "1.0.1"
+version = "1.0.2"
 description = ""
 authors = ["Devaraju Garigapati <devarajugarigapati@gmail.com>"]
 readme = "README.md"
